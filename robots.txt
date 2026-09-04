@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pessoa-solutions.fr/sitemap.xml
