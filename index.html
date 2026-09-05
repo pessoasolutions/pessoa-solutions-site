@@ -322,7 +322,7 @@ footer{background:var(--foot-bg);color:#B9C8DA;padding:clamp(70px,10vh,130px) 0 
 .burger{display:flex}
 .hero-grid,.pres,.two,.cwrap,.fgrid{grid-template-columns:1fr}
 .pres-sticky{position:static}
-#psCanvas{width:100%;opacity:.42!important}
+#psCanvas{width:100%;opacity:.6!important}
 .hero{align-items:center;padding-top:130px}
 .hero-side{margin-top:44px}
 .fgrid{gap:34px}
@@ -865,7 +865,7 @@ var canvasReady=false;
 (function(){
 var cv=document.getElementById('psCanvas'), ctx=cv.getContext('2d'), pts=[], dpr=Math.min(devicePixelRatio||1,2);
 var PAL=['10,31,68','11,90,117'];
-window.__psTheme=function(t){ PAL = t==='dark' ? ['238,243,249','79,169,198'] : ['10,31,68','11,90,117']; };
+window.__psTheme=function(t){ PAL = t==='dark' ? ['246,250,254','116,206,232'] : ['10,31,68','11,90,117']; };
 window.__psTheme(document.documentElement.getAttribute('data-theme')||'light');
 var mouse={x:-9999,y:-9999};
 var img=new Image(); img.src=document.getElementById('monoSrc').src;
@@ -876,19 +876,19 @@ var scale=Math.min(h*0.72/img.height, w*0.72/img.width);
 var iw=img.width*scale, ih=img.height*scale, ox=(w-iw)/2, oy=(h-ih)/2;
 var oc=document.createElement('canvas'); oc.width=Math.max(1,Math.floor(iw)); oc.height=Math.max(1,Math.floor(ih));
 var octx=oc.getContext('2d'); octx.drawImage(img,0,0,oc.width,oc.height);
-var d=octx.getImageData(0,0,oc.width,oc.height).data, step=Math.max(3,Math.round(oc.width/150));
+var d=octx.getImageData(0,0,oc.width,oc.height).data, step=Math.max(3,Math.round(oc.width/168));
 pts=[];
 for(var y=0;y<oc.height;y+=step){ for(var x=0;x<oc.width;x+=step){
 var i=(y*oc.width+x)*4, a=d[i+3], lum=(d[i]*0.299+d[i+1]*0.587+d[i+2]*0.114);
 if(a>60 && lum<210){
 pts.push({tx:ox+x,ty:oy+y,
 x:ox+x+(Math.random()-.5)*w*0.8, y:oy+y+(Math.random()-.5)*h*0.8,
-vx:0,vy:0, r:Math.random()*1.05+0.35,
+vx:0,vy:0, r:1.1+Math.random()*1.4,
 dark: lum<90,
-o: 0.30+Math.random()*0.5});
+o: 0.52+Math.random()*0.4});
 }
 }}
-if(pts.length>4200){ pts=pts.filter(function(_,i){return i%2===0;}); }
+if(pts.length>5400){ pts=pts.filter(function(_,i){return i%2===0;}); }
 }
 function frame(){
 if(!pts.length) return;
