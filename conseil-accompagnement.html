@@ -71,11 +71,10 @@
     <path d="M-100,560 C280,400 520,610 900,450 C1180,330 1320,405 1560,340" fill="none" stroke="currentColor" stroke-opacity=".07" stroke-width="1.5" style="color:var(--head)"/>
     <path d="M-100,586 C280,426 520,636 900,476 C1180,356 1320,431 1560,366" fill="none" stroke="var(--gold)" stroke-opacity=".30" stroke-width="1"/>
   </svg>
-  <img class="pmark l-day" src="assets/mono-t.png" alt="" aria-hidden="true">
-  <img class="pmark l-night" src="assets/mono-td.png" alt="" aria-hidden="true">
+  <canvas id="psCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="crumb fade"><a href="index.html">Accueil</a><span>/</span>Conseil & accompagnement</div>
-    <div class="mono">Service 03</div>
+    <div class="mono" id="scramble">Service 03</div>
     <h1 class="rev">Conseil & accompagnement</h1>
     <p class="lead fade">Parfois, le problème n'est pas une tâche à déléguer mais une situation à démêler. On fait le point ensemble, on identifie ce qui bloque, et on décide de la suite avec un plan tenable.</p>
     <div class="pcta fade">
@@ -93,7 +92,7 @@
   <div class="wrap">
 <div class="head"><span class="mono">02 / Déroulement</span><span class="rule"></span></div>
 <h2 class="rev" style="max-width:18ch">Comment ça se passe</h2>
-<div class="steps fade"><div><span class="k">01</span><h3>Premier échange</h3><p>Gratuit et sans engagement. Vous racontez, je pose des questions, je vous dis si je peux aider.</p></div><div><span class="k">02</span><h3>Diagnostic</h3><p>Je regarde les pièces, les outils, les habitudes de travail. J'en tire un état des lieux honnête.</p></div><div><span class="k">03</span><h3>Plan d'action</h3><p>Quelques priorités réalistes plutôt qu'une longue liste. Ce qui compte, c'est que vous puissiez le tenir.</p></div><div><span class="k">04</span><h3>Mise en oeuvre</h3><p>Je vous accompagne sur la durée choisie, ou je vous laisse avancer seul si c'est suffisant.</p></div></div>
+<div class="stack" id="stack"><div class="card"><div class="k">01</div><div><h3>Premier échange</h3><p>Gratuit et sans engagement. Vous racontez, je pose des questions, je vous dis si je peux aider.</p></div></div><div class="card"><div class="k">02</div><div><h3>Diagnostic</h3><p>Je regarde les pièces, les outils, les habitudes de travail. J'en tire un état des lieux honnête.</p></div></div><div class="card"><div class="k">03</div><div><h3>Plan d'action</h3><p>Quelques priorités réalistes plutôt qu'une longue liste. Ce qui compte, c'est que vous puissiez le tenir.</p></div></div><div class="card"><div class="k">04</div><div><h3>Mise en oeuvre</h3><p>Je vous accompagne sur la durée choisie, ou je vous laisse avancer seul si c'est suffisant.</p></div></div></div></div>
   </div>
 </section><section class="sec">
   <div class="wrap">
@@ -103,7 +102,7 @@
   </div>
 </section><section class="sec section--alt">
   <div class="wrap">
-<div class="zero fade"><h3>Le premier échange ne coûte rien</h3><p>Le premier rendez-vous sert à savoir si je suis utile dans votre situation. Il est gratuit, il dure environ trente minutes, et il se termine soit par une proposition écrite, soit par une orientation vers le bon interlocuteur.</p><div class="zerolist"><div><b>0 €</b><span>le premier échange</span></div><div><b>30 min</b><span>pour y voir clair</span></div><div><b>Sans suite obligatoire</b><span>vous décidez ensuite</span></div></div></div>
+<div class="zero fade"><h3>Le premier échange ne coûte rien</h3><p>Le premier rendez-vous sert à savoir si je suis utile dans votre situation. Il est gratuit, il dure environ trente minutes, et il se termine soit par une proposition écrite, soit par une orientation vers le bon interlocuteur.</p><div class="zerolist"><div><b data-count="0" data-suffix=" €">0 €</b><span>le premier échange</span></div><div><b data-count="30" data-suffix=" min">0min</b><span>pour y voir clair</span></div><div><b>Sans suite obligatoire</b><span>vous décidez ensuite</span></div></div></div>
   </div>
 </section><section class="sec">
   <div class="wrap">

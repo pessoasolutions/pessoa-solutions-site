@@ -71,11 +71,10 @@
     <path d="M-100,560 C280,400 520,610 900,450 C1180,330 1320,405 1560,340" fill="none" stroke="currentColor" stroke-opacity=".07" stroke-width="1.5" style="color:var(--head)"/>
     <path d="M-100,586 C280,426 520,636 900,476 C1180,356 1320,431 1560,366" fill="none" stroke="var(--gold)" stroke-opacity=".30" stroke-width="1"/>
   </svg>
-  <img class="pmark l-day" src="assets/mono-t.png" alt="" aria-hidden="true">
-  <img class="pmark l-night" src="assets/mono-td.png" alt="" aria-hidden="true">
+  <canvas id="psCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="crumb fade"><a href="index.html">Accueil</a><span>/</span>À propos</div>
-    <div class="mono">À propos</div>
+    <div class="mono" id="scramble">À propos</div>
     <h1 class="rev">Toujours la même personne en face de vous</h1>
     <p class="lead fade">PESSOA SOLUTIONS, c'est une personne : Flavien Debade. Vous avez la même au téléphone, dans les e-mails et sur vos dossiers, du premier échange jusqu'à la fin de la mission.</p>
     <div class="pcta fade">
@@ -91,7 +90,7 @@
   <div class="wrap">
 <div class="head"><span class="mono">01 / Façon de travailler</span><span class="rule"></span></div>
 <h2 class="rev" style="max-width:18ch">Quatre engagements tenus sur chaque mission</h2>
-<div class="steps fade"><div><span class="k">01</span><h3>Je réponds vite</h3><p>Une demande reçue en journée obtient une réponse sous vingt-quatre heures ouvrées, même quand la réponse est un simple accusé de réception.</p></div><div><span class="k">02</span><h3>Je dis quand je ne sais pas</h3><p>Personne ne maîtrise tout. Reconnaître une limite fait gagner du temps à tout le monde, et évite les mauvaises surprises.</p></div><div><span class="k">03</span><h3>J'écris ce qui est convenu</h3><p>Périmètre, délai, prix. Un devis accepté, et on avance sans renégociation en cours de route.</p></div><div><span class="k">04</span><h3>Je rends autonome</h3><p>L'objectif n'est pas de vous rendre dépendant. Ce que vous pouvez faire seul, je vous montre comment le faire.</p></div></div>
+<div class="stack" id="stack"><div class="card"><div class="k">01</div><div><h3>Je réponds vite</h3><p>Une demande reçue en journée obtient une réponse sous vingt-quatre heures ouvrées, même quand la réponse est un simple accusé de réception.</p></div></div><div class="card"><div class="k">02</div><div><h3>Je dis quand je ne sais pas</h3><p>Personne ne maîtrise tout. Reconnaître une limite fait gagner du temps à tout le monde, et évite les mauvaises surprises.</p></div></div><div class="card"><div class="k">03</div><div><h3>J'écris ce qui est convenu</h3><p>Périmètre, délai, prix. Un devis accepté, et on avance sans renégociation en cours de route.</p></div></div><div class="card"><div class="k">04</div><div><h3>Je rends autonome</h3><p>L'objectif n'est pas de vous rendre dépendant. Ce que vous pouvez faire seul, je vous montre comment le faire.</p></div></div></div></div>
   </div>
 </section><section class="sec">
   <div class="wrap">

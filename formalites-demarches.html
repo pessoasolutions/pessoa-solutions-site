@@ -71,11 +71,10 @@
     <path d="M-100,560 C280,400 520,610 900,450 C1180,330 1320,405 1560,340" fill="none" stroke="currentColor" stroke-opacity=".07" stroke-width="1.5" style="color:var(--head)"/>
     <path d="M-100,586 C280,426 520,636 900,476 C1180,356 1320,431 1560,366" fill="none" stroke="var(--gold)" stroke-opacity=".30" stroke-width="1"/>
   </svg>
-  <img class="pmark l-day" src="assets/mono-t.png" alt="" aria-hidden="true">
-  <img class="pmark l-night" src="assets/mono-td.png" alt="" aria-hidden="true">
+  <canvas id="psCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="crumb fade"><a href="index.html">Accueil</a><span>/</span>Formalités & démarches</div>
-    <div class="mono">Service 02</div>
+    <div class="mono" id="scramble">Service 02</div>
     <h1 class="rev">Formalités & démarches</h1>
     <p class="lead fade">Un dossier à monter, un organisme qui ne répond pas, un formulaire qui demande une pièce que personne ne vous a réclamée. Je prends la démarche en charge du début à la fin et je vous tiens informé à chaque étape.</p>
     <div class="pcta fade">
@@ -93,7 +92,7 @@
   <div class="wrap">
 <div class="head"><span class="mono">02 / Déroulement</span><span class="rule"></span></div>
 <h2 class="rev" style="max-width:18ch">Comment ça se passe</h2>
-<div class="steps fade"><div><span class="k">01</span><h3>Vous exposez la situation</h3><p>Un appel ou un message suffit. Je vous dis dans la foulée si la démarche est faisable et ce qu'elle implique.</p></div><div><span class="k">02</span><h3>Je réunis les pièces</h3><p>Vous recevez une liste claire de ce qu'il me faut. Je m'occupe de tout le reste, y compris des formulaires.</p></div><div><span class="k">03</span><h3>Le dossier part</h3><p>Dépôt effectué au bon endroit, avec preuve de dépôt et copie complète conservée pour vous.</p></div><div><span class="k">04</span><h3>Je relance jusqu'au bout</h3><p>Tant que la réponse n'est pas arrivée, le dossier reste ouvert de mon côté. Vous êtes informé à chaque étape.</p></div></div>
+<div class="stack" id="stack"><div class="card"><div class="k">01</div><div><h3>Vous exposez la situation</h3><p>Un appel ou un message suffit. Je vous dis dans la foulée si la démarche est faisable et ce qu'elle implique.</p></div></div><div class="card"><div class="k">02</div><div><h3>Je réunis les pièces</h3><p>Vous recevez une liste claire de ce qu'il me faut. Je m'occupe de tout le reste, y compris des formulaires.</p></div></div><div class="card"><div class="k">03</div><div><h3>Le dossier part</h3><p>Dépôt effectué au bon endroit, avec preuve de dépôt et copie complète conservée pour vous.</p></div></div><div class="card"><div class="k">04</div><div><h3>Je relance jusqu'au bout</h3><p>Tant que la réponse n'est pas arrivée, le dossier reste ouvert de mon côté. Vous êtes informé à chaque étape.</p></div></div></div></div>
   </div>
 </section><section class="sec">
   <div class="wrap">
@@ -103,7 +102,7 @@
   </div>
 </section><section class="sec section--alt">
   <div class="wrap">
-<div class="zero fade"><h3>Une limite claire, annoncée dès le départ</h3><p>PESSOA SOLUTIONS n'est ni un cabinet juridique, ni un cabinet comptable. Je n'exerce aucun acte réservé à ces professions. Mon rôle est de préparer, de constituer, de déposer et de suivre vos dossiers. Quand une situation demande un avocat ou un expert-comptable, je vous le dis franchement et vous ne payez rien.</p><div class="zerolist"><div><b>0 €</b><span>si la démarche n'est pas de mon ressort</span></div><div><b>Preuve de dépôt</b><span>systématiquement conservée</span></div><div><b>Suivi</b><span>jusqu'à la réponse de l'organisme</span></div></div></div>
+<div class="zero fade"><h3>Une limite claire, annoncée dès le départ</h3><p>PESSOA SOLUTIONS n'est ni un cabinet juridique, ni un cabinet comptable. Je n'exerce aucun acte réservé à ces professions. Mon rôle est de préparer, de constituer, de déposer et de suivre vos dossiers. Quand une situation demande un avocat ou un expert-comptable, je vous le dis franchement et vous ne payez rien.</p><div class="zerolist"><div><b data-count="0" data-suffix=" €">0 €</b><span>si la démarche n'est pas de mon ressort</span></div><div><b>Preuve de dépôt</b><span>systématiquement conservée</span></div><div><b>Suivi</b><span>jusqu'à la réponse de l'organisme</span></div></div></div>
   </div>
 </section><section class="sec">
   <div class="wrap">

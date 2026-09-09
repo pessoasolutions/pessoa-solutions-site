@@ -71,11 +71,10 @@
     <path d="M-100,560 C280,400 520,610 900,450 C1180,330 1320,405 1560,340" fill="none" stroke="currentColor" stroke-opacity=".07" stroke-width="1.5" style="color:var(--head)"/>
     <path d="M-100,586 C280,426 520,636 900,476 C1180,356 1320,431 1560,366" fill="none" stroke="var(--gold)" stroke-opacity=".30" stroke-width="1"/>
   </svg>
-  <img class="pmark l-day" src="assets/mono-t.png" alt="" aria-hidden="true">
-  <img class="pmark l-night" src="assets/mono-td.png" alt="" aria-hidden="true">
+  <canvas id="psCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="crumb fade"><a href="index.html">Accueil</a><span>/</span>Sites créés</div>
-    <div class="mono">Sites créés</div>
+    <div class="mono" id="scramble">Sites créés</div>
     <h1 class="rev">Des sites que vous pouvez ouvrir</h1>
     <p class="lead fade">La création de sites est l'une des cinq activités de PESSOA SOLUTIONS, aux côtés de la gestion administrative, des formalités, du conseil et des solutions numériques. Voici les sites déjà en ligne : de vraies commandes, utilisées tous les jours par les entreprises qui les ont demandées.</p>
     <div class="pcta fade">
@@ -92,11 +91,11 @@
 <div class="head"><span class="mono">01 / Méthode</span><span class="rule"></span></div>
 <h2 class="rev" style="max-width:18ch">Ce qui revient dans chaque projet</h2>
 <p class="fade lead" style="margin-top:22px">Les secteurs changent, la façon de travailler reste la même.</p>
-<div class="steps fade"><div><span class="k">01</span><h3>Comprendre le métier</h3><p>Impossible d'écrire un site crédible sans comprendre ce que le client vend et à qui. C'est la partie la plus longue, et la plus utile.</p></div><div><span class="k">02</span><h3>Écrire avant de dessiner</h3><p>Un beau site sans propos ne convertit personne. Les textes viennent en premier, la mise en page les sert.</p></div><div><span class="k">03</span><h3>Construire léger</h3><p>Pas de gros gabarit générique. Des pages rapides, lisibles sur téléphone, qui se chargent même en zone mal couverte.</p></div><div><span class="k">04</span><h3>Livrer autonome</h3><p>Domaine au nom du client, hébergement gratuit, aucun abonnement. Le site tourne sans moi.</p></div></div>
+<div class="stack" id="stack"><div class="card"><div class="k">01</div><div><h3>Comprendre le métier</h3><p>Impossible d'écrire un site crédible sans comprendre ce que le client vend et à qui. C'est la partie la plus longue, et la plus utile.</p></div></div><div class="card"><div class="k">02</div><div><h3>Écrire avant de dessiner</h3><p>Un beau site sans propos ne convertit personne. Les textes viennent en premier, la mise en page les sert.</p></div></div><div class="card"><div class="k">03</div><div><h3>Construire léger</h3><p>Pas de gros gabarit générique. Des pages rapides, lisibles sur téléphone, qui se chargent même en zone mal couverte.</p></div></div><div class="card"><div class="k">04</div><div><h3>Livrer autonome</h3><p>Domaine au nom du client, hébergement gratuit, aucun abonnement. Le site tourne sans moi.</p></div></div></div></div>
   </div>
 </section><section class="sec">
   <div class="wrap">
-<div class="zero fade"><h3>Le même engagement sur chaque projet</h3><p>Aucun de ces sites ne coûte le moindre euro d'hébergement à son propriétaire. Aucun n'est enfermé dans une plateforme propriétaire. Chacun peut être repris par un autre prestataire du jour au lendemain.</p><div class="zerolist"><div><b>0 €</b><span>d'hébergement pour chaque site livré</span></div><div><b>100 %</b><span>des domaines au nom du client</span></div><div><b>Aucun verrou</b><span>code et fichiers remis</span></div></div></div>
+<div class="zero fade"><h3>Le même engagement sur chaque projet</h3><p>Aucun de ces sites ne coûte le moindre euro d'hébergement à son propriétaire. Aucun n'est enfermé dans une plateforme propriétaire. Chacun peut être repris par un autre prestataire du jour au lendemain.</p><div class="zerolist"><div><b data-count="0" data-suffix=" €">0 €</b><span>d'hébergement pour chaque site livré</span></div><div><b data-count="100" data-suffix=" %">0 %</b><span>des domaines au nom du client</span></div><div><b>Aucun verrou</b><span>code et fichiers remis</span></div></div></div>
   </div>
 </section><section class="cta-band">
   <div class="wrap">

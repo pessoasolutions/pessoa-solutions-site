@@ -71,11 +71,10 @@
     <path d="M-100,560 C280,400 520,610 900,450 C1180,330 1320,405 1560,340" fill="none" stroke="currentColor" stroke-opacity=".07" stroke-width="1.5" style="color:var(--head)"/>
     <path d="M-100,586 C280,426 520,636 900,476 C1180,356 1320,431 1560,366" fill="none" stroke="var(--gold)" stroke-opacity=".30" stroke-width="1"/>
   </svg>
-  <img class="pmark l-day" src="assets/mono-t.png" alt="" aria-hidden="true">
-  <img class="pmark l-night" src="assets/mono-td.png" alt="" aria-hidden="true">
+  <canvas id="psCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="crumb fade"><a href="index.html">Accueil</a><span>/</span>Tarifs &amp; fonctionnement</div>
-    <div class="mono">Tarifs & fonctionnement</div>
+    <div class="mono" id="scramble">Tarifs & fonctionnement</div>
     <h1 class="rev">Ce que ça coûte, et ce que ça ne coûte pas</h1>
     <p class="lead fade">Pas de grille figée affichée au mur : chaque mission est différente. En revanche, la façon dont je facture est claire, annoncée avant de commencer, et sans mauvaise surprise en cours de route.</p>
     <div class="pcta fade">
@@ -87,11 +86,11 @@
   <div class="wrap">
 <div class="head"><span class="mono">01 / Principes</span><span class="rule"></span></div>
 <h2 class="rev" style="max-width:18ch">Quatre règles, toujours les mêmes</h2>
-<div class="steps fade"><div><span class="k">01</span><h3>Devis avant tout</h3><p>Rien ne démarre sans une proposition écrite que vous avez acceptée. Le montant annoncé est le montant facturé.</p></div><div><span class="k">02</span><h3>Le premier échange est gratuit</h3><p>Trente minutes pour comprendre votre situation et savoir si je peux vous aider. Sans engagement de votre part.</p></div><div><span class="k">03</span><h3>Aucun abonnement imposé</h3><p>Je ne vends pas de forfait mensuel obligatoire. Une mission ponctuelle reste ponctuelle.</p></div><div><span class="k">04</span><h3>Vous restez propriétaire</h3><p>Fichiers, comptes, domaines, données : tout est à votre nom et vous repartez avec, quoi qu'il arrive.</p></div></div>
+<div class="stack" id="stack"><div class="card"><div class="k">01</div><div><h3>Devis avant tout</h3><p>Rien ne démarre sans une proposition écrite que vous avez acceptée. Le montant annoncé est le montant facturé.</p></div></div><div class="card"><div class="k">02</div><div><h3>Le premier échange est gratuit</h3><p>Trente minutes pour comprendre votre situation et savoir si je peux vous aider. Sans engagement de votre part.</p></div></div><div class="card"><div class="k">03</div><div><h3>Aucun abonnement imposé</h3><p>Je ne vends pas de forfait mensuel obligatoire. Une mission ponctuelle reste ponctuelle.</p></div></div><div class="card"><div class="k">04</div><div><h3>Vous restez propriétaire</h3><p>Fichiers, comptes, domaines, données : tout est à votre nom et vous repartez avec, quoi qu'il arrive.</p></div></div></div></div>
   </div>
 </section><section class="sec section--alt">
   <div class="wrap">
-<div class="zero fade"><h3>Le coût zéro pour le client</h3><p>C'est le point sur lequel je ne transige pas : hors mes honoraires, une prestation PESSOA SOLUTIONS ne doit générer aucun frais récurrent. Concrètement, un site vitrine livré ne coûte rien tous les mois à son propriétaire, et une organisation numérique mise en place repose autant que possible sur des outils gratuits.</p><div class="zerolist"><div><b>0 €</b><span>d'hébergement pour un site vitrine</span></div><div><b>0 €</b><span>d'abonnement ou de licence imposés</span></div><div><b>12 € env.</b><span>par an pour un nom de domaine, à votre nom</span></div></div></div>
+<div class="zero fade"><h3>Le coût zéro pour le client</h3><p>C'est le point sur lequel je ne transige pas : hors mes honoraires, une prestation PESSOA SOLUTIONS ne doit générer aucun frais récurrent. Concrètement, un site vitrine livré ne coûte rien tous les mois à son propriétaire, et une organisation numérique mise en place repose autant que possible sur des outils gratuits.</p><div class="zerolist"><div><b data-count="0" data-suffix=" €">0 €</b><span>d'hébergement pour un site vitrine</span></div><div><b data-count="0" data-suffix=" €">0 €</b><span>d'abonnement ou de licence imposés</span></div><div><b data-count="12" data-suffix=" € env.">0 € env.</b><span>par an pour un nom de domaine, à votre nom</span></div></div></div>
   </div>
 </section><section class="sec">
   <div class="wrap">

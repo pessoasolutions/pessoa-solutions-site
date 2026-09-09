@@ -369,3 +369,38 @@ var yrEl=document.getElementById('yr'); if(yrEl) yrEl.textContent=new Date().get
   document.addEventListener('click',function(e){ if(!w.contains(e.target)) w.classList.remove('open'); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') w.classList.remove('open'); });
 })();
+
+/* compteurs animes */
+(function(){
+  var els=[].slice.call(document.querySelectorAll('[data-count]'));
+  if(!els.length) return;
+  function run(el){
+    var target=parseFloat(el.getAttribute('data-count'))||0, suf=el.getAttribute('data-suffix')||'';
+    if(target===0){ el.textContent='0'+suf; return; }
+    var t0=null, dur=1100;
+    function step(ts){
+      if(!t0) t0=ts;
+      var p=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(target*e)+suf;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target); } });
+  },{threshold:.6});
+  els.forEach(function(e){ io.observe(e); });
+})();
+
+/* halo au survol sur les cartes des pages interieures */
+(function(){
+  var cards=document.querySelectorAll('.deliv > div,.work,.ogrid a,.faq details,.stack .card');
+  cards.forEach(function(c){
+    c.classList.add('glow');
+    c.addEventListener('pointermove',function(e){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      c.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+})();

@@ -493,3 +493,15 @@ nav.zdark .dd a:hover{background:rgba(255,255,255,.06)}
 .ogrid span{font-size:.84rem;color:var(--muted)}
 @media (max-width:900px){.ogrid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.ogrid{grid-template-columns:1fr}}
+
+/* halo discret sur les cartes des pages interieures */
+.glow{position:relative;overflow:hidden}
+.glow::before{content:"";position:absolute;width:420px;height:420px;left:var(--mx,50%);top:var(--my,50%);
+  transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(11,90,117,.09),transparent 62%);
+  opacity:0;transition:opacity .45s var(--ease);pointer-events:none;z-index:0}
+.glow:hover::before{opacity:1}
+[data-theme="dark"] .glow::before{background:radial-gradient(circle,rgba(116,206,232,.10),transparent 62%)}
+.glow > *{position:relative;z-index:1}
+/* monogramme interactif dans les heros de pages */
+.phero #psCanvas{width:48%;right:2%}
+@media (max-width:900px){.phero #psCanvas{width:70%;opacity:.5!important}}
