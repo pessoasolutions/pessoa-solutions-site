@@ -227,7 +227,7 @@ var canvasReady=false;
 var cv=document.getElementById('psCanvas'); if(!cv||!document.getElementById('monoSrc')) return;
 var ctx=cv.getContext('2d'), pts=[], dpr=Math.min(devicePixelRatio||1,2);
 var PAL=['10,31,68','11,90,117'];
-window.__psTheme=function(t){ PAL = t==='dark' ? ['246,250,254','116,206,232'] : ['10,31,68','11,90,117']; };
+window.__psTheme=function(t){ PAL = t==='dark' ? ['246,250,254','116,206,232'] : ['10,31,68','11,90,117']; if(RM && canvasReady) still(); };
 window.__psTheme(document.documentElement.getAttribute('data-theme')||'light');
 var mouse={x:-9999,y:-9999};
 var img=new Image(); img.src=document.getElementById('monoSrc').src;
@@ -268,8 +268,15 @@ ctx.fillStyle='rgba('+(p.dark?PAL[0]:PAL[1])+','+p.o+')';
 ctx.fillRect(p.x,p.y,p.r,p.r);
 }
 }
-img.onload=function(){ try{ build(); }catch(e){ return; } canvasReady=true; if(document.body.classList.contains('ready')) cv.classList.add('in'); };
-window.addEventListener('resize',function(){ if(canvasReady) build(); });
+function still(){ /* rendu fixe quand l'utilisateur limite les animations */
+if(!pts.length) return;
+ctx.clearRect(0,0,cv.clientWidth,cv.clientHeight);
+for(var i=0;i<pts.length;i++){ var p=pts[i];
+ctx.fillStyle='rgba('+(p.dark?PAL[0]:PAL[1])+','+p.o+')';
+ctx.fillRect(p.tx,p.ty,p.r,p.r); } }
+window.__psStill=still;
+img.onload=function(){ try{ build(); }catch(e){ return; } canvasReady=true; if(RM) still(); if(document.body.classList.contains('ready')) cv.classList.add('in'); };
+window.addEventListener('resize',function(){ if(canvasReady){ build(); if(RM) still(); } });
 if(!touch){ window.addEventListener('mousemove',function(e){
 var r=cv.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; });}
 window.__psFrame=function(){ if(!RM) frame(); };

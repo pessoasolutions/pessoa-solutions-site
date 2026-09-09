@@ -505,3 +505,5 @@ nav.zdark .dd a:hover{background:rgba(255,255,255,.06)}
 /* monogramme interactif dans les heros de pages */
 .phero #psCanvas{width:48%;right:2%}
 @media (max-width:900px){.phero #psCanvas{width:70%;opacity:.5!important}}
+.wbadge{position:absolute;top:38px;left:12px;z-index:3;background:var(--surface);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
