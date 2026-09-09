@@ -37,24 +37,15 @@ document.documentElement.animate(
 });
 } else { applyTheme(next); }
 });
-/* ---------- PRELOADER ---------- */
-var pre=document.getElementById('pre'),preNum=document.getElementById('preNum'),preBar=document.getElementById('preBar');
-var p=0, t0=performance.now();
-function loadTick(now){
-var d=Math.min((now-t0)/1250,1);
-p=Math.round((1-Math.pow(1-d,3))*100);
-preNum.textContent=p; preBar.style.width=p+'%';
-if(d<1){requestAnimationFrame(loadTick);} else {setTimeout(start,220);}
-}
-requestAnimationFrame(loadTick);
+/* ---------- DEMARRAGE ---------- */
 function start(){
-pre.classList.add('done');
 document.documentElement.classList.add('ready');
 document.body.classList.add('ready');
-setTimeout(function(){pre.style.display='none';},1100);
 scramble();
-if(canvasReady) document.getElementById('psCanvas').classList.add('in');
+var c=document.getElementById('psCanvas');
+if(canvasReady && c) c.classList.add('in');
 }
+if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',start); } else { start(); }
 /* ---------- TEXT SCRAMBLE ---------- */
 function scramble(){
 var el=document.getElementById('scramble'); if(!el) return; var fin=el.textContent, chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&', i=0;
@@ -220,7 +211,7 @@ hnext.addEventListener('click',function(){ htrack.scrollBy({left:step(),behavior
 })();
 /* ---------- STICKY STACK ---------- */
 var cards=[].slice.call(document.querySelectorAll('#stack .card'));
-cards.forEach(function(c,i){ c.style.top=(110+i*16)+'px'; c.style.zIndex=i+1; c.style.marginBottom='26px'; });
+cards.forEach(function(c,i){ c.style.top=(122+i*16)+'px'; c.style.zIndex=i+1; c.style.marginBottom='26px'; });
 /* ---------- CANVAS PARTICLE MONOGRAM ---------- */
 var canvasReady=false;
 (function(){
@@ -291,7 +282,7 @@ var max=document.body.scrollHeight-vh;
 if(prog) prog.style.transform='scaleX('+(max>0?y/max:0)+')';
 /* nav */
 nav.classList.toggle('solid', y>40 && !sheet.classList.contains('on'));
-var navH=window.innerWidth<720?76:84, zd=false;
+var navH=window.innerWidth<720?80:92, zd=false;
 for(var zi=0;zi<darkZones.length;zi++){ var zr=darkZones[zi].getBoundingClientRect(); if(zr.top<=navH && zr.bottom>=0){ zd=true; break; } }
 nav.classList.toggle('zdark', zd && !sheet.classList.contains('on'));
 lastY=y;
