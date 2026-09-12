@@ -513,3 +513,30 @@ nav.zdark .dd a:hover{background:rgba(255,255,255,.06)}
 /* lien d'evitement clavier */
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--navy);color:#fff;padding:12px 20px;border-radius:0 0 10px 0;font-size:.9rem;font-weight:700;text-decoration:none;letter-spacing:.04em}
 .skip:focus{left:0}
+
+/* bouton d'appel flottant, mobile uniquement */
+.callfab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;
+display:none;align-items:center;gap:9px;padding:13px 20px;border-radius:40px;
+background:var(--btn-bg);color:var(--btn-fg);text-decoration:none;font-weight:700;
+font-size:.95rem;letter-spacing:.01em;box-shadow:0 12px 34px var(--shadow);
+border:1px solid var(--glass-line)}
+.callfab svg{flex:0 0 auto}
+@media (max-width:720px){.callfab{display:flex}}
+.sheet.on ~ .callfab{display:none}
+
+/* temoignages clients */
+.testi{display:grid;gap:clamp(18px,2.4vw,28px);grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.quote{border:1px solid var(--line);border-radius:2px;padding:clamp(26px,3vw,38px);
+background:var(--surface);position:relative;display:flex;flex-direction:column;gap:20px}
+.quote::before{content:"";position:absolute;left:0;top:0;width:2px;height:46px;background:var(--gold)}
+.quote blockquote{font-family:'Amiri',Georgia,serif;font-size:clamp(1.12rem,1.5vw,1.34rem);
+line-height:1.62;color:var(--head);margin:0}
+.quote figcaption{display:flex;flex-direction:column;gap:2px;margin-top:auto}
+.quote cite{font-style:normal;font-weight:700;color:var(--head);font-size:.98rem}
+.quote small{font-size:0.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* lisibilite du monogramme sur petit ecran : il reste une texture, jamais un obstacle */
+@media (max-width:760px){
+  #psCanvas{opacity:.20!important}
+  .phero #psCanvas{opacity:.18!important;width:74%!important;right:-6%}
+}
