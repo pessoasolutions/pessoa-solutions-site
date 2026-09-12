@@ -509,3 +509,7 @@ nav.zdark .dd a:hover{background:rgba(255,255,255,.06)}
   border-radius:999px;padding:5px 13px;font-size:0.728rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
 .monosrc{position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none}
+
+/* lien d'evitement clavier */
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--navy);color:#fff;padding:12px 20px;border-radius:0 0 10px 0;font-size:.9rem;font-weight:700;text-decoration:none;letter-spacing:.04em}
+.skip:focus{left:0}
