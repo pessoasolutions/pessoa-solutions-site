@@ -544,3 +544,17 @@ line-height:1.62;color:var(--head);margin:0}
 
 /* titre lu par les lecteurs d'ecran, invisible a l'ecran */
 .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+
+/* cas concrets de la page Tarifs */
+.cas{display:grid;gap:clamp(16px,2vw,24px);grid-template-columns:repeat(auto-fit,minmax(320px,1fr));margin-top:clamp(28px,4vh,46px)}
+.cas article{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:13px;
+background:var(--surface);border:1px solid var(--line);border-radius:4px;
+padding:clamp(24px,2.6vw,34px)}
+.cas article::before{content:"";position:absolute;left:0;top:0;width:3px;height:64px;
+background:linear-gradient(var(--gold),transparent)}
+.cas .lab{font-size:0.663rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.cas h3{font-family:'Amiri',Georgia,'Times New Roman',serif;font-weight:400;
+font-size:clamp(1.3rem,2vw,1.72rem);color:var(--head);line-height:1.24}
+.cas p{color:var(--muted);font-size:1.02rem;margin:0}
+.cas .mode{margin-top:auto;padding-top:15px;border-top:1px solid var(--line);
+color:var(--head);font-size:.95rem}
