@@ -48,17 +48,10 @@ if(canvasReady && c) c.classList.add('in');
 if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',start); } else { start(); }
 /* ---------- TEXT SCRAMBLE ---------- */
 function scramble(){
-var el=document.getElementById('scramble'); if(!el) return; var fin=el.textContent, chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&', i=0;
-if(RM) return;
-var id=setInterval(function(){
-el.textContent=fin.split('').map(function(c,k){
-if(k<i) return c;
-if(c===' ') return ' ';
-return chars[Math.floor(Math.random()*chars.length)];
-}).join('');
-i+=1.1;
-if(i>=fin.length){clearInterval(id);el.textContent=fin;}
-},26);
+/* l'effet de brouillage affichait des suites de lettres aleatoires a la place
+   du libelle reel ; il a ete retire. Le libelle apparait desormais tel quel. */
+var el=document.getElementById('scramble'); if(!el) return;
+el.classList.add('in');
 }
 /* ---------- SMOOTH SCROLL (desktop only) ---------- */
 var target=window.scrollY, current=window.scrollY, smoothing=!touch && !RM;
@@ -385,6 +378,7 @@ var yrEl=document.getElementById('yr'); if(yrEl) yrEl.textContent=new Date().get
   function run(el){
     var target=parseFloat(el.getAttribute('data-count'))||0, suf=el.getAttribute('data-suffix')||'';
     if(target===0){ el.textContent='0'+suf; return; }
+    el.textContent=target+suf;
     var t0=null, dur=1100;
     function step(ts){
       if(!t0) t0=ts;
