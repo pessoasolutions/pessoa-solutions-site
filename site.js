@@ -324,6 +324,10 @@ if(!ok){ first.focus(); return; }
 var d=new FormData(form);
 var btn=document.getElementById('send'), lab=btn.querySelector('span:not(.fill)');
 var out=document.getElementById('sent');
+/* anti-spam : on n'envoie rien et on n'alerte pas le robot */
+if(window.__psSpam){ var motif=window.__psSpam(d);
+if(motif){ out.textContent='Votre demande est bien partie. Vous recevrez une réponse sous 24 h ouvrées.';
+out.classList.add('on'); lab.textContent='Demande envoyée'; btn.disabled=true; return; } }
 var initial=lab.textContent;
 lab.textContent='Envoi en cours';
 btn.disabled=true;
@@ -405,4 +409,101 @@ var yrEl=document.getElementById('yr'); if(yrEl) yrEl.textContent=new Date().get
       c.style.setProperty('--my',(e.clientY-r.top)+'px');
     });
   });
+})();
+
+/* ---------- ANTI-SPAM (sans service tiers, sans cookie) ---------- */
+(function(){
+  window.__psT0=Date.now();
+  var f=document.getElementById('form'); if(!f) return;
+  /* champ leurre injecte par JS : un robot qui lit le HTML brut ne le voit pas,
+     un robot qui execute le JS le remplit et se trahit */
+  var h=document.createElement('input');
+  h.type='text'; h.name='_confirm_url'; h.tabIndex=-1; h.autocomplete='off';
+  h.setAttribute('aria-hidden','true');
+  h.style.cssText='position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none';
+  f.appendChild(h);
+  window.__psSpam=function(d){
+    if((d.get('_honey')||'').trim()) return 'honey';
+    if((d.get('_confirm_url')||'').trim()) return 'leurre';
+    if(Date.now()-window.__psT0 < 4000) return 'trop rapide';
+    var m=(d.get('message')||'');
+    if((m.match(/https?:\/\/|www\./gi)||[]).length > 2) return 'liens';
+    if(/\[url=|\[link=|<a\s+href/i.test(m)) return 'balises';
+    return null;
+  };
+})();
+
+/* ---------- CONSENTEMENT COOKIES ET MESURE D'AUDIENCE ----------
+   Tant que GA_ID est vide, aucun traceur n'est charge et aucune banniere
+   n'est affichee : le site reste exempte de recueil de consentement.
+   Pour activer la mesure, remplacer '' par l'identifiant Google Analytics 4
+   de la forme 'G-XXXXXXXXXX'. Rien d'autre a modifier. */
+(function(){
+  var GA_ID='';
+  var CLE='ps_consent', DUREE=182*24*3600*1000; /* 6 mois, recommandation CNIL */
+
+  function lire(){ try{ var v=JSON.parse(localStorage.getItem(CLE)||'null');
+    if(!v||!v.d||Date.now()-v.d>DUREE) return null; return v.c; }catch(e){ return null; } }
+  function ecrire(c){ try{ localStorage.setItem(CLE,JSON.stringify({c:c,d:Date.now()})); }catch(e){} }
+
+  function charger(){
+    if(!GA_ID||window.__psGA) return; window.__psGA=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){ window.dataLayer.push(arguments); };
+    gtag('js',new Date());
+    gtag('config',GA_ID,{anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false});
+    var t=document.createElement('script'); t.async=true;
+    t.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(GA_ID);
+    document.head.appendChild(t);
+  }
+  function purger(){
+    /* retrait des cookies deposes par une acceptation precedente */
+    document.cookie.split(';').forEach(function(c){
+      var n=c.split('=')[0].trim();
+      if(/^(_ga|_gid|_gat)/.test(n)){
+        var h=location.hostname.replace(/^www\./,'');
+        document.cookie=n+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+        document.cookie=n+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.'+h;
+      }
+    });
+  }
+
+  function banniere(){
+    if(document.querySelector('.ck')) return;
+    var b=document.createElement('div');
+    b.className='ck'; b.setAttribute('role','dialog');
+    b.setAttribute('aria-label','Mesure d\u2019audience');
+    b.innerHTML='<div class="ck-in"><div class="ck-tx"><b>Mesure d\u2019audience</b>'
+      +'Ce site peut d\u00e9poser un cookie de statistiques pour compter les visites et savoir quelles pages '
+      +'sont consult\u00e9es. Aucune publicit\u00e9, aucune revente de donn\u00e9es. Le refus n\u2019emp\u00eache rien. '
+      +'<a href="politique-de-confidentialite.html">Politique de confidentialit\u00e9</a></div>'
+      +'<div class="ck-bt"><button type="button" class="ck-no">Refuser</button>'
+      +'<button type="button" class="ck-ok">Accepter</button></div></div>';
+    document.body.appendChild(b); document.body.classList.add('ck-on');
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ b.classList.add('on'); }); });
+    function fermer(){ b.classList.remove('on'); document.body.classList.remove('ck-on');
+      setTimeout(function(){ b.remove(); },520); }
+    b.querySelector('.ck-ok').addEventListener('click',function(){ ecrire(true); charger(); fermer(); });
+    b.querySelector('.ck-no').addEventListener('click',function(){ ecrire(false); purger(); fermer(); });
+  }
+
+  window.__psConsent=function(){ try{ localStorage.removeItem(CLE); }catch(e){}
+    purger(); if(GA_ID) banniere(); };
+
+  /* lien de revocation dans le pied de page, cree seulement si la mesure est active */
+  function lienPied(){
+    if(!GA_ID) return;
+    var z=document.querySelector('footer .fgrid > div:last-child'); if(!z) return;
+    if(z.querySelector('.ckmaj')) return;
+    var a=document.createElement('button');
+    a.type='button'; a.className='ckmaj'; a.textContent='G\u00e9rer mes cookies';
+    a.addEventListener('click',function(){ window.__psConsent(); });
+    z.appendChild(a);
+  }
+
+  if(!GA_ID) return;              /* rien du tout : ni traceur, ni banniere, ni lien */
+  lienPied();
+  var c=lire();
+  if(c===true) charger();
+  else if(c===null) banniere();
 })();

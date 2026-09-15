@@ -558,3 +558,33 @@ font-size:clamp(1.3rem,2vw,1.72rem);color:var(--head);line-height:1.24}
 .cas p{color:var(--muted);font-size:1.02rem;margin:0}
 .cas .mode{margin-top:auto;padding-top:15px;border-top:1px solid var(--line);
 color:var(--head);font-size:.95rem}
+
+/* ---------- CONSENTEMENT COOKIES ---------- */
+.ck{position:fixed;left:0;right:0;bottom:0;z-index:9000;
+padding:18px var(--pad) calc(18px + env(safe-area-inset-bottom));
+background:var(--surface);border-top:1px solid var(--line);
+box-shadow:0 -18px 44px var(--shadow);
+transform:translateY(102%);transition:transform .5s var(--ease),background-color .55s var(--ease),border-color .55s var(--ease)}
+.ck.on{transform:none}
+.ck-in{width:100%;max-width:var(--max);margin:0 auto;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.ck-tx{flex:1 1 400px;min-width:250px;font-size:.93rem;line-height:1.66;color:var(--ink)}
+.ck-tx b{display:block;font-family:'Amiri',Georgia,'Times New Roman',serif;font-weight:400;
+font-size:1.1rem;line-height:1.3;color:var(--head);margin-bottom:5px}
+.ck-tx a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.ck-tx a:hover{color:var(--head)}
+.ck-bt{display:flex;gap:11px;flex-wrap:wrap}
+.ck-bt button{font-size:.88rem;letter-spacing:.015em;padding:13px 24px;border-radius:2px;
+border:1px solid var(--line-2);background:none;color:var(--head);
+transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.ck-bt button:hover{border-color:var(--head)}
+.ck-bt .ck-ok{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+.ck-bt .ck-ok:hover{background:var(--btn-hover);border-color:var(--btn-hover);color:#fff}
+.ck-bt button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:620px){.ck{padding-top:16px}.ck-in{gap:15px}.ck-bt{width:100%}
+.ck-bt button{flex:1 1 130px;text-align:center;padding:13px 14px}}
+@media(prefers-reduced-motion:reduce){.ck{transition:none}}
+/* le bandeau s'efface quand le menu plein ecran est ouvert (menu : z-index 880) */
+body.lock .ck{transform:translateY(102%)}
+/* et il ne doit pas recouvrir le bouton d'appel flottant sous 720px */
+body.ck-on .callfab{display:none}
+.ckmaj{text-align:left;text-decoration:underline;text-underline-offset:3px;font:inherit;color:inherit}
