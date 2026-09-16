@@ -588,3 +588,21 @@ body.lock .ck{transform:translateY(102%)}
 /* et il ne doit pas recouvrir le bouton d'appel flottant sous 720px */
 body.ck-on .callfab{display:none}
 .ckmaj{text-align:left;text-decoration:underline;text-underline-offset:3px;font:inherit;color:inherit}
+
+/* ---------- JUSTIFICATION DES TEXTES LONGS ----------
+   Les pages contractuelles et les guides se lisent comme des documents : texte
+   justifie. La cesure automatique est indispensable, sinon une colonne de 74ch
+   justifiee creuse des rivieres blanches, et pire encore sur mobile. `lang="fr"`
+   est deja pose sur <html>, la cesure suit donc les regles francaises.
+   Les titres, chapeaux, listes courtes et elements d'interface restent en drapeau. */
+.legal p,.legal li{
+text-align:justify;text-justify:inter-word;
+-webkit-hyphens:auto;hyphens:auto;hyphenate-limit-chars:6 3 3;
+text-wrap:pretty}
+/* un mot trop long ne doit jamais deborder faute de point de cesure */
+.legal p,.legal li{overflow-wrap:break-word}
+/* La justification est conservee sur mobile : c'est la cesure qui rend une colonne
+   etroite lisible, pas le drapeau. Si la cesure est indisponible, le navigateur
+   etire les blancs, ce qui reste acceptable sur ces longueurs de ligne. */
+/* le formulaire type de retractation en annexe garde ses lignes pointillees a gauche */
+.legal .notbox p{text-align:left;hyphens:manual}
