@@ -610,3 +610,32 @@ text-wrap:pretty}
 @media (max-width:560px){.legal p,.legal li{text-align:left}}
 /* le formulaire type de retractation en annexe garde ses lignes pointillees a gauche */
 .legal .notbox p{text-align:left;hyphens:manual}
+
+/* ---------- GUIDES : MEME TRAITEMENT QUE LES PAGES CONTRACTUELLES ----------
+   Mesure faite au rendu : les paragraphes de corps des guides s'etalaient sur 960 px,
+   soit environ 112 caracteres par ligne, la ou les pages contractuelles sont bridees a
+   74ch (~87 caracteres). Au-dela de 75 caracteres l'oeil perd la ligne en revenant a la
+   gauche du bloc. La largeur est donc ramenee au meme calibre, et le texte justifie
+   comme sur les CGV. Les chapeaux, les cartes courtes et les libelles restent intacts. */
+.doc .sec .wrap > p:not(.lead):not(.mono),
+.doc .faq p{
+max-width:74ch;
+text-align:justify;text-justify:inter-word;
+-webkit-hyphens:auto;hyphens:auto;hyphenate-limit-chars:6 3 3;
+text-wrap:pretty;overflow-wrap:break-word}
+/* Les encadres .notbox n'avaient AUCUNE limite de largeur : mesure au rendu, 1233 px,
+   soit 143 caracteres par ligne, contre 87 sur les pages contractuelles. Au-dela de 75
+   l'oeil rate la ligne suivante en revenant a la gauche du bloc. Le defaut touchait les
+   guides, la page Tarifs et toute page utilisant cet encadre : la largeur est bridee
+   partout, independamment de la justification. */
+/* Le cadre lui-meme est bride, sinon le texte se retrouve tasse a gauche d'un
+   encadre pleine largeur, ce qui deséquilibre le bloc. */
+.notbox{max-width:80ch}
+.notbox p{max-width:none}
+/* justifie seulement sur les pages qui se lisent comme des documents */
+.doc .notbox p{text-align:justify;-webkit-hyphens:auto;hyphens:auto;text-wrap:pretty}
+@media (max-width:560px){.doc .notbox p{text-align:left}}
+
+/* meme seuil que les pages contractuelles : sans cesure disponible, une colonne
+   etroite justifiee etire les blancs */
+@media (max-width:560px){.doc .sec .wrap > p:not(.lead):not(.mono),.doc .faq p{text-align:left}}
