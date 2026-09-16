@@ -445,7 +445,7 @@ var yrEl=document.getElementById('yr'); if(yrEl) yrEl.textContent=new Date().get
    Pour activer la mesure, remplacer '' par l'identifiant Google Analytics 4
    de la forme 'G-XXXXXXXXXX'. Rien d'autre a modifier. */
 (function(){
-  var GA_ID='';
+  var GA_ID='G-H2ZEWZ0NM0';
   var CLE='ps_consent', DUREE=182*24*3600*1000; /* 6 mois, recommandation CNIL */
 
   function lire(){ try{ var v=JSON.parse(localStorage.getItem(CLE)||'null');
