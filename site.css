@@ -601,8 +601,12 @@ text-align:justify;text-justify:inter-word;
 text-wrap:pretty}
 /* un mot trop long ne doit jamais deborder faute de point de cesure */
 .legal p,.legal li{overflow-wrap:break-word}
-/* La justification est conservee sur mobile : c'est la cesure qui rend une colonne
-   etroite lisible, pas le drapeau. Si la cesure est indisponible, le navigateur
-   etire les blancs, ce qui reste acceptable sur ces longueurs de ligne. */
+/* Mesure faite sur le site en ligne : hyphens:auto ne produit AUCUNE cesure, meme
+   avec lang="fr" (32 lignes avec et sans, colonne de 335 px). Le dictionnaire de
+   cesure francais n'est pas charge par le moteur de rendu. Justifier une colonne de
+   cette largeur sans cesure etire les blancs a chaque ligne : sous 560 px, le texte
+   repasse donc en drapeau, qui se lit mieux. La cesure reste demandee au cas ou un
+   navigateur la fournisse, elle ne fait alors que du bien. */
+@media (max-width:560px){.legal p,.legal li{text-align:left}}
 /* le formulaire type de retractation en annexe garde ses lignes pointillees a gauche */
 .legal .notbox p{text-align:left;hyphens:manual}
