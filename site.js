@@ -93,10 +93,16 @@ return line.trim().split(/\s+/).map(function(w){return '<span class="w"><i>'+w+'
 el.innerHTML=html;
 el.querySelectorAll('.w>i').forEach(function(i,k){i.style.transitionDelay=(k*0.045)+'s';});
 });
-var io=new IntersectionObserver(function(es){
-es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target);} });
-},{threshold:0.18,rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.rev,.fade').forEach(function(el){io.observe(el);});
+function ioShow(e,obs){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } }
+var io=new IntersectionObserver(function(es){ es.forEach(function(e){ ioShow(e,io); }); },
+{threshold:0.18,rootMargin:'0px 0px -8% 0px'});
+/* Un bloc plus haut que la fenetre ne peut PAS atteindre 18 % de visibilite : il resterait
+   invisible pour toujours. Ceux-la sont observes au premier pixel visible. */
+var ioHaut=new IntersectionObserver(function(es){ es.forEach(function(e){ ioShow(e,ioHaut); }); },
+{threshold:0,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rev,.fade').forEach(function(el){
+(el.getBoundingClientRect().height > window.innerHeight*0.7 ? ioHaut : io).observe(el);
+});
 /* ---------- MAGNETIC BUTTONS ---------- */
 if(!touch && !RM){
 document.querySelectorAll('.mag').forEach(function(m){
