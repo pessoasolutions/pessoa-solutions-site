@@ -150,11 +150,13 @@ transition:opacity .5s var(--ease),transform .6s var(--ease)}
 .hero-grid{display:grid;grid-template-columns:1.35fr .8fr;gap:clamp(24px,4vw,70px);align-items:end;width:100%}
 #psCanvas{position:absolute;top:0;right:0;width:58%;height:100%;pointer-events:none;opacity:0;transition:opacity 1.6s var(--ease) .5s}
 #psCanvas.in{opacity:1}
-.hero h1{position:relative;z-index:2}
+.hero h1{position:relative;z-index:2;display:inline-block;width:max-content;max-width:100%}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ln>i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.15s var(--ease)}
-.hero h1 .lockup{font-family:'Lato',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:400;
-font-size:.63em;letter-spacing:.40em;line-height:1.25;padding-top:.14em;text-indent:0}
+.hero h1 .ln>i.lockup{font-family:'Lato',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:400;
+font-size:.52em;letter-spacing:0;line-height:1.05;padding-top:0;margin-top:-.16em;text-indent:0;
+display:flex;justify-content:space-between;width:100%}
+.hero h1 .ln>i.lockup>b{font-weight:400;display:block}
 .ready .hero h1 .ln>i{transform:none}
 .hero h1 .ln:nth-child(2)>i{transition-delay:.09s}
 .acc{color:var(--petrol)}
@@ -324,7 +326,7 @@ footer{background:var(--foot-bg);color:#B9C8DA;padding:clamp(70px,10vh,130px) 0 
 }
 @media (max-width:720px){
 .hpin .htop p{display:none}
-.hero h1 .lockup{font-size:.46em;letter-spacing:.24em;line-height:1.3}
+.hero h1 .ln>i.lockup{font-size:.42em;line-height:1.1;margin-top:-.10em}
 .mono{letter-spacing:.22em;font-size:0.642rem}
 .hero-sub{gap:8px 16px}
 .nav-right .mag{display:none}
